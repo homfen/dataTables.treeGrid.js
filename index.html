@@ -3,74 +3,87 @@
     <head>
         <title>TreeGrid for DataTables</title>
         <link rel="stylesheet" type="text/css" href="./jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="./select.dataTables.css">
     </head>
     <body>
         <table id="example" class="display" cellspacing="0" width="100%"></table>
-        <div id='table'></div>
+        <table id="exampleWithSelect" class="display" cellspacing="0" width="100%"></table>
         <script src='./jquery.js'></script>
         <script src='./jquery.dataTables.js'></script>
+        <script src='./dataTables.select.js'></script>
         <script src='./dataTables.treeGrid.js'></script>
         <script>
+            var columns = [
+                {
+                    title: '',
+                    target: 0,
+                    className: 'treegrid-control',
+                    data: function (item) {
+                        if (item.children) {
+                            return '<span>+<\/span>';
+                        }
+                        return '';
+                    }
+                },
+                {
+                    title: 'Name',
+                    target: 1,
+                    data: function (item) {
+                        return item.name;
+                    }
+                },
+                {
+                    title: 'Position',
+                    target: 2,
+                    data: function (item) {
+                        return item.position;
+                    }
+                },
+                {
+                    title: 'Office',
+                    target: 3,
+                    data: function (item) {
+                        return item.office;
+                    }
+                },
+                {
+                    title: 'Extn.',
+                    target: 4,
+                    data: function (item) {
+                        return item.extn;
+                    }
+                },
+                {
+                    title: 'Start date',
+                    target: 5,
+                    data: function (item) {
+                        return item.start;
+                    }
+                },
+                {
+                    title: 'Salary',
+                    target: 6,
+                    data: function (item) {
+                        return item.salary;
+                    }
+                }
+            ];
             $(document).ready(function () {
                 $('#example').DataTable({
-                    'columns': [
-                        {
-                            title: '',
-                            target: 0,
-                            className: 'treegrid-control',
-                            data: function (item) {
-                                if (item.children) {
-                                    return '<span>+<\/span>';
-                                }
-                                return '';
-                            }
-                        },
-                        {
-                            title: 'Name',
-                            target: 1,
-                            data: function (item) {
-                                return item.name;
-                            }
-                        },
-                        {
-                            title: 'Position',
-                            target: 2,
-                            data: function (item) {
-                                return item.position;
-                            }
-                        },
-                        {
-                            title: 'Office',
-                            target: 3,
-                            data: function (item) {
-                                return item.office;
-                            }
-                        },
-                        {
-                            title: 'Extn.',
-                            target: 4,
-                            data: function (item) {
-                                return item.extn;
-                            }
-                        },
-                        {
-                            title: 'Start date',
-                            target: 5,
-                            data: function (item) {
-                                return item.start;
-                            }
-                        },
-                        {
-                            title: 'Salary',
-                            target: 6,
-                            data: function (item) {
-                                return item.salary;
-                            }
-                        }
-                    ],
+                    'columns': columns,
                     'ajax': './arrays.txt',
                     'treeGrid': {
-                        'left': 5,
+                        'left': 10,
+                        'expandIcon': '<span>+<\/span>',
+                        'collapseIcon': '<span>-<\/span>'
+                    }
+                });
+                $('#exampleWithSelect').DataTable({
+                    'select': 'multi',
+                    'columns': columns,
+                    'ajax': './arrays.txt',
+                    'treeGrid': {
+                        'left': 10,
                         'expandIcon': '<span>+<\/span>',
                         'collapseIcon': '<span>-<\/span>'
                     }
