@@ -37,7 +37,17 @@
             $(document).ready(function () {
                 $('#example').DataTable({
                     'columns': [
-                        {target: 0, className: 'treegrid-control', data: null},
+                        {
+                            target: 0,
+                            className: 'treegrid-control',
+                            data: null,
+                            content: function (item) {
+                                if (item.children) {
+                                    return '<span>+</span>';
+                                }
+                                return '';
+                            }
+                        },
                         null,
                         null,
                         null,
