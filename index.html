@@ -81,7 +81,10 @@
                     }
                 });
                 $('#exampleWithSelect').DataTable({
-                    'select': 'multi',
+                    'select': {
+                        'style': 'multi',
+                        'selector': ':not(.treegrid-control,.treegrid-control-open)'
+                    },
                     'columns': columns,
                     'ajax': './arrays.txt',
                     'treeGrid': {
