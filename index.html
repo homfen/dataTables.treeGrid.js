@@ -43,21 +43,41 @@
                             data: null,
                             content: function (item) {
                                 if (item.children) {
-                                    return '<span>+</span>';
+                                    return '<span>+<\/span>';
                                 }
                                 return '';
                             }
                         },
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
+                        {
+                            target: 1,
+                            content: item[0]
+                        },
+                        {
+                            target: 2,
+                            content: item[1]
+                        },
+                        {
+                            target: 3,
+                            content: item[2]
+                        },
+                        {
+                            target: 4,
+                            content: item[3]
+                        },
+                        {
+                            target: 5,
+                            content: item[4]
+                        },
+                        {
+                            target: 6,
+                            content: item[5]
+                        }
                     ],
                     'ajax': './arrays.txt',
                     'treeGrid': {
-                        'left': 5
+                        'left': 5,
+                        'expandIcon': '<span>+<\/span>',
+                        'collapseIcon': '<span>-<\/span>'
                     }
                 });
             });
