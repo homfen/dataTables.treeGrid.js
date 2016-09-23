@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+        <title>TreeGrid for DataTables</title>
+    </head>
+    <body>
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Extn.</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Extn.</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+            </tfoot>
+        </table>
+        <div id='table'></div>
+        <script src='./jquery.js'></script>
+        <script src='./jquery.dataTables.js'></script>
+        <script src='./dataTables.treeGrid.js'></script>
+        <script>
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    'ajax': './arrays.txt'
+                });
+            });
+        </script>
+    </body>
+</html>
