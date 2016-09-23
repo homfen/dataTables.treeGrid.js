@@ -99,6 +99,10 @@
                             $(node).remove();
                         });
                         delete treeGridRows[index];
+                        $(dataTable.row(index).node()).find('.treegrid-control-open').each(function (i, td) {
+                            $(td).removeClass('treegrid-control-open').addClass('treegrid-control');
+                            $(td).html('').append(expandIcon.clone());
+                        });
                     }
                 });
             };
