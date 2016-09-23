@@ -73,6 +73,7 @@
             this.s = $.extend(true, this.s, TreeGrid.defaults, oInit);
 
             var settings = this.s.dt;
+            var select = settings._select;
             var dataTable = $(settings.nTable).dataTable().api();
             var sLeft = this.s.left;
             var treeGridRows = {};
@@ -110,7 +111,7 @@
             var resetEvenOddClass = function (dataTable) {
                 var classes = ['odd', 'even'];
                 $(dataTable.table().body()).find('tr').each(function (index, tr) {
-                    $(tr).attr('class', classes[index % 2]);
+                    $(tr).removeClass('odd even').addClass(classes[index % 2]);
                 });
             };
 
@@ -118,7 +119,7 @@
             dataTable.on('click', 'td.treegrid-control', function (e) {
                 // record selected indexes
                 var selectedIndexes = [];
-                settings._select && (selectedIndexes = dataTable.rows({selected: true}).indexes().toArray());
+                select && (selectedIndexes = dataTable.rows({selected: true}).indexes().toArray());
 
                 var row = dataTable.row(this);
                 var index = row.index();
@@ -149,7 +150,7 @@
                     });
 
                     resetEvenOddClass(dataTable);
-                    settings._select && setTimeout(function () {
+                    select && setTimeout(function () {
                         dataTable.rows(selectedIndexes).select();
                     }, 0);
                 }
@@ -157,6 +158,9 @@
 
             // Collapse TreeGrid
             dataTable.on('click', 'td.treegrid-control-open', function (e) {
+                var selectedIndexes = [];
+                select && (selectedIndexes = dataTable.rows({selected: true}).indexes().toArray());
+
                 var td = $(dataTable.cell(this).node());
                 var layer = parseInt(td.find('span').css('margin-left') || 0, 10) / sLeft;
                 var icon = expandIcon.clone();
@@ -167,6 +171,9 @@
                 var index = dataTable.row(this).index();
                 resetTreeGridRows(index);
                 resetEvenOddClass(dataTable);
+                select && setTimeout(function () {
+                    dataTable.rows(selectedIndexes).select();
+                }, 0);
             });
 
             // resetTreeGridRows on pagination
@@ -181,7 +188,7 @@
 
             var inProgress = false;
             // Check parents and children on select
-            dataTable.on('select', function (e, dt, type, indexes) {
+            select && select.style === 'multi' && dataTable.on('select', function (e, dt, type, indexes) {
                 if (inProgress) {
                     return;
                 }
@@ -197,7 +204,7 @@
             });
 
             // Check parents and children on deselect
-            dataTable.on('deselect', function (e, dt, type, indexes) {
+            select && select.style === 'multi' && dataTable.on('deselect', function (e, dt, type, indexes) {
                 if (inProgress) {
                     return;
                 }
