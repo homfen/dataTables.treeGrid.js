@@ -117,6 +117,10 @@
 
             // Expand TreeGrid
             dataTable.on('click', 'td.treegrid-control', function (e) {
+                if (!$(this).html()) {
+                    return;
+                }
+
                 // record selected indexes
                 var selectedIndexes = [];
                 select && (selectedIndexes = dataTable.rows({selected: true}).indexes().toArray());
