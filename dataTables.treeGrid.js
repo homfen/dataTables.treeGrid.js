@@ -110,7 +110,7 @@
                 });
             };
 
-            // 展开TreeGrid
+            // Expand TreeGrid
             dataTable.on('click', 'td.treegrid-control', function (e) {
                 var row = dataTable.row(this);
                 var index = row.index();
@@ -142,7 +142,7 @@
 
                     resetEvenOddClass(dataTable);
                     var selectedIndexes = dataTable.rows({selected: true}).indexes().toArray();
-                    setTimeout(function () {
+                    selectedIndexes.length && setTimeout(function () {
                         dataTable.rows(selectedIndexes).select();
                     }, 0);
                 }
@@ -159,6 +159,7 @@
 
                 var index = dataTable.row(this).index();
                 resetTreeGridRows(index);
+                resetEvenOddClass(dataTable);
             });
 
             // resetTreeGridRows on pagination
