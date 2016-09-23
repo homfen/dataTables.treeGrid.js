@@ -116,6 +116,10 @@
 
             // Expand TreeGrid
             dataTable.on('click', 'td.treegrid-control', function (e) {
+                // record selected indexes
+                var selectedIndexes = [];
+                settings._select && (selectedIndexes = dataTable.rows({selected: true}).indexes().toArray());
+
                 var row = dataTable.row(this);
                 var index = row.index();
                 var data = row.data();
@@ -145,12 +149,9 @@
                     });
 
                     resetEvenOddClass(dataTable);
-                    if (settings._select) {
-                        var selectedIndexes = dataTable.rows({selected: true}).indexes().toArray();
-                        setTimeout(function () {
-                            dataTable.rows(selectedIndexes).select();
-                        }, 0);
-                    }
+                    settings._select && setTimeout(function () {
+                        dataTable.rows(selectedIndexes).select();
+                    }, 0);
                 }
             });
 
