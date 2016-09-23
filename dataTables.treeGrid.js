@@ -72,8 +72,8 @@
         fnConstruct: function (oInit) {
             this.s = $.extend(true, this.s, TreeGrid.defaults, oInit);
 
-            var jqTable = $(this.s.dt.nTable).dataTable();
-            var dataTable = jqTable.api();
+            var settings = this.s.dt;
+            var dataTable = $(settings.nTable).dataTable().api();
             var sLeft = this.s.left;
             var treeGridRows = {};
             var expandIcon = $(this.s.expandIcon);
@@ -141,10 +141,12 @@
                     });
 
                     resetEvenOddClass(dataTable);
-                    var selectedIndexes = dataTable.rows({selected: true}).indexes().toArray();
-                    selectedIndexes.length && setTimeout(function () {
-                        dataTable.rows(selectedIndexes).select();
-                    }, 0);
+                    if (settings._select) {
+                        var selectedIndexes = dataTable.rows({selected: true}).indexes().toArray();
+                        setTimeout(function () {
+                            dataTable.rows(selectedIndexes).select();
+                        }, 0);
+                    }
                 }
             });
 
