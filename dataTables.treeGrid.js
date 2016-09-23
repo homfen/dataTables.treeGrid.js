@@ -170,7 +170,7 @@
             });
 
             // resetTreeGridRows on sorting
-            dataTable.on('sort', function () {
+            dataTable.on('order', function () {
                 resetTreeGridRows();
             });
 
