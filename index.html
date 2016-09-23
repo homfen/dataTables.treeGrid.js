@@ -50,27 +50,39 @@
                         },
                         {
                             target: 1,
-                            content: item[0]
+                            content: function (item) {
+                                return item[0];
+                            }
                         },
                         {
                             target: 2,
-                            content: item[1]
+                            content: function (item) {
+                                return item[1];
+                            }
                         },
                         {
                             target: 3,
-                            content: item[2]
+                            content: function (item) {
+                                return item[2];
+                            }
                         },
                         {
                             target: 4,
-                            content: item[3]
+                            content: function (item) {
+                                return item[3];
+                            }
                         },
                         {
                             target: 5,
-                            content: item[4]
+                            content: function (item) {
+                                return item[4];
+                            }
                         },
                         {
                             target: 6,
-                            content: item[5]
+                            content: function (item) {
+                                return item[5];
+                            }
                         }
                     ],
                     'ajax': './arrays.txt',
