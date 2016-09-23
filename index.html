@@ -36,6 +36,15 @@
         <script>
             $(document).ready(function () {
                 $('#example').DataTable({
+                    'columns': [
+                        {target: 0, className: 'treegrid-control'},
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
                     'ajax': './arrays.txt',
                     'treeGrid': {
                         'left': 5
