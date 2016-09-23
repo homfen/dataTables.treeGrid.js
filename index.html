@@ -4,12 +4,130 @@
         <title>TreeGrid for DataTables</title>
         <link rel="stylesheet" type="text/css" href="./jquery.dataTables.css">
         <link rel="stylesheet" type="text/css" href="./select.dataTables.css">
+        <style>
+        html, body {
+            width: 800px;
+            margin: 50px auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            margin-top: 50px;
+        }
+        h4 {
+            display: inline-block;
+            padding: 5px;
+            border: 1px solid #eee;
+            margin: 0;
+            font-weight: normal;
+        }
+        pre {
+            padding: 0 10px;
+            background: #eee;
+            border-radius: 10px;
+            line-height: 2em;
+        }
+        .hide {
+            display: none;
+        }
+        </style>
     </head>
     <body>
-        <h1>DataTables with TreeGrid</h1>
+        <h1>TreeGrid extension for DataTables</h1>
+        <h2>DataTables with TreeGrid</h2>
         <table id="example" class="display" cellspacing="0" width="100%"></table>
-        <h1>DataTables with TreeGrid and Select</h1>
+        <h4 class='show'>+show code</h4>
+        <pre class='hide'>
+            <code>
+var columns = [
+{
+    title: '',
+    target: 0,
+    className: 'treegrid-control',
+    data: function (item) {
+        if (item.children) {
+            return '<span>+<\/span>';
+        }
+        return '';
+    }
+},
+{
+    title: 'Name',
+    target: 1,
+    data: function (item) {
+        return item.name;
+    }
+},
+{
+    title: 'Position',
+    target: 2,
+    data: function (item) {
+        return item.position;
+    }
+},
+{
+    title: 'Office',
+    target: 3,
+    data: function (item) {
+        return item.office;
+    }
+},
+{
+    title: 'Extn.',
+    target: 4,
+    data: function (item) {
+        return item.extn;
+    }
+},
+{
+    title: 'Start date',
+    target: 5,
+    data: function (item) {
+        return item.start;
+    }
+},
+{
+    title: 'Salary',
+    target: 6,
+    data: function (item) {
+        return item.salary;
+    }
+}
+];
+
+$('#example').DataTable({
+    'columns': columns,
+    'ajax': './arrays.txt',
+    'treeGrid': {
+        'left': 10,
+        'expandIcon': '<span>+<\/span>',
+        'collapseIcon': '<span>-<\/span>'
+    }
+});
+            </code>
+        </pre>
+        <h2>DataTables with TreeGrid and Select</h2>
         <table id="exampleWithSelect" class="display" cellspacing="0" width="100%"></table>
+        <h4 class='show'>+show code</h4>
+        <pre class='hide'>
+            <code>
+var columns = [...];
+$('#exampleWithSelect').DataTable({
+    'select': {
+        'style': 'multi',
+        'selector': 'td:not(:first-child)'
+    },
+    'columns': columns,
+    'ajax': './arrays.txt',
+    'treeGrid': {
+        'left': 10,
+        'expandIcon': '<span>+<\/span>',
+        'collapseIcon': '<span>-<\/span>'
+    }
+});
+            </code>
+        </pre>
         <script src='./jquery.js'></script>
         <script src='./jquery.dataTables.js'></script>
         <script src='./dataTables.select.js'></script>
@@ -83,7 +201,7 @@
                 $('#exampleWithSelect').DataTable({
                     'select': {
                         'style': 'multi',
-                        'selector': ':not(.treegrid-control,.treegrid-control-open)'
+                        'selector': 'td:not(:first-child)'
                     },
                     'columns': columns,
                     'ajax': './arrays.txt',
@@ -91,6 +209,18 @@
                         'left': 10,
                         'expandIcon': '<span>+<\/span>',
                         'collapseIcon': '<span>-<\/span>'
+                    }
+                });
+
+                $('h4').on('click', function () {
+                    var h4 = $(this);
+                    if (h4.hasClass('show')) {
+                        h4.removeClass('show').addClass('showed').html('-hide code');
+                        h4.next().removeClass('hide');
+                    }
+                    else {
+                        h4.removeClass('showed').addClass('show').html('+show code');
+                        h4.next().addClass('hide');
                     }
                 });
             });
