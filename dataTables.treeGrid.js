@@ -103,6 +103,13 @@
                 });
             };
 
+            var resetEvenOddClass = function (dataTable) {
+                var classes = ['odd', 'even'];
+                $(dataTable.table().body()).find('tr').each(function (index, tr) {
+                    $(tr).attr('class', classes[index % 2]);
+                });
+            };
+
             // 展开TreeGrid
             dataTable.on('click', 'td.treegrid-control', function (e) {
                 var row = dataTable.row(this);
@@ -119,7 +126,7 @@
 
                 if (data.children && data.children.length) {
                     var subRows = treeGridRows[index] = [];
-                    var nextRow = dataTable.row(index + 1);
+                    var prevRow = row.node();
                     data.children.forEach(function (item) {
                         var newRow = dataTable.row.add(item);
                         var node = newRow.node();
@@ -128,10 +135,12 @@
                         $(node).attr('parent-index', index);
                         treegridTd.find('span').css('marginLeft', left + 'px');
                         treegridTd.next().css('paddingLeft', paddingLeft + left + 'px');
-                        $(node).insertBefore(nextRow.node());
+                        $(node).insertAfter(prevRow);
+                        prevRow = node;
                         subRows.push(node);
                     });
 
+                    resetEvenOddClass(dataTable);
                     var selectedIndexes = dataTable.rows({selected: true}).indexes().toArray();
                     setTimeout(function () {
                         dataTable.rows(selectedIndexes).select();
