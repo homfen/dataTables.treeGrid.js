@@ -18,8 +18,7 @@
                             title: '',
                             target: 0,
                             className: 'treegrid-control',
-                            data: null,
-                            content: function (item) {
+                            data: function (item) {
                                 if (item.children) {
                                     return '<span>+<\/span>';
                                 }
@@ -29,42 +28,42 @@
                         {
                             title: 'Name',
                             target: 1,
-                            content: function (item) {
+                            data: function (item) {
                                 return item[0];
                             }
                         },
                         {
                             title: 'Position',
                             target: 2,
-                            content: function (item) {
+                            data: function (item) {
                                 return item[1];
                             }
                         },
                         {
                             title: 'Office',
                             target: 3,
-                            content: function (item) {
+                            data: function (item) {
                                 return item[2];
                             }
                         },
                         {
                             title: 'Extn.',
                             target: 4,
-                            content: function (item) {
+                            data: function (item) {
                                 return item[3];
                             }
                         },
                         {
                             title: 'Start date',
                             target: 5,
-                            content: function (item) {
+                            data: function (item) {
                                 return item[4];
                             }
                         },
                         {
                             title: 'Salary',
                             target: 6,
-                            content: function (item) {
+                            data: function (item) {
                                 return item[5];
                             }
                         }
