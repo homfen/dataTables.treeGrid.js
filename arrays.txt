@@ -7,7 +7,7 @@
             "extn": "5421",
             "start": "2011\/04\/25",
             "salary": "$320,800",
-            "childen": [
+            "children": [
                 {
                     "name": "Hermione Butler",
                     "position": "Regional Director",
