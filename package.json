@@ -1,0 +1,23 @@
+{
+  "name": "datatables-treegrid",
+  "version": "1.0.0",
+  "description": "treegrid extension for datatables",
+  "main": "dataTables.treeGrid.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/homfen/dataTables.treeGrid.js.git"
+  },
+  "keywords": [
+    "treegrid",
+    "datatables"
+  ],
+  "author": "homfen@outlook.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/homfen/dataTables.treeGrid.js/issues"
+  },
+  "homepage": "https://github.com/homfen/dataTables.treeGrid.js#readme"
+}
