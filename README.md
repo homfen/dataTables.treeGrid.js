@@ -4,14 +4,14 @@ TreeGrid extension for jquery DataTables
 ## Demo
 [https://homfen.github.io/dataTables.treeGrid.js](https://homfen.github.io/dataTables.treeGrid.js)
 
-## options
+## Options
 ```left```: indent of children
 
 ```expandIcon```: expand icon html
 
 ```collapseIcon```: collapse icon html
 
-## usage
+## Usage
 ```html
 $('#example').DataTable({
     'treeGrid': {
@@ -21,3 +21,6 @@ $('#example').DataTable({
     }
 });
 ```
+
+## License
+MIT license.
