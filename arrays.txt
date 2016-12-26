@@ -22,39 +22,41 @@
                     "office": "London",
                     "extn": "6733",
                     "start": "2009\/02\/27",
-                    "salary": "$103,500"
-                },
-                {
-                    "name": "Jonas Alexander",
-                    "position": "Developer",
-                    "office": "San Francisco",
-                    "extn": "8196",
-                    "start": "2010\/07\/14",
-                    "salary": "$86,500"
-                },
-                {
-                    "name": "Shad Decker",
-                    "position": "Regional Director",
-                    "office": "Edinburgh",
-                    "extn": "6373",
-                    "start": "2008\/11\/13",
-                    "salary": "$183,000"
-                },
-                {
-                    "name": "Michael Bruce",
-                    "position": "Javascript Developer",
-                    "office": "Singapore",
-                    "extn": "5384",
-                    "start": "2011\/06\/27",
-                    "salary": "$183,000"
-                },
-                {
-                    "name": "Donna Snider",
-                    "position": "Customer Support",
-                    "office": "New York",
-                    "extn": "4226",
-                    "start": "2011\/01\/25",
-                    "salary": "$112,000"
+                    "salary": "$103,500",
+                    "children": [
+                        {
+                            "name": "Jonas Alexander",
+                            "position": "Developer",
+                            "office": "San Francisco",
+                            "extn": "8196",
+                            "start": "2010\/07\/14",
+                            "salary": "$86,500"
+                        },
+                        {
+                            "name": "Shad Decker",
+                            "position": "Regional Director",
+                            "office": "Edinburgh",
+                            "extn": "6373",
+                            "start": "2008\/11\/13",
+                            "salary": "$183,000"
+                        },
+                        {
+                            "name": "Michael Bruce",
+                            "position": "Javascript Developer",
+                            "office": "Singapore",
+                            "extn": "5384",
+                            "start": "2011\/06\/27",
+                            "salary": "$183,000"
+                        },
+                        {
+                            "name": "Donna Snider",
+                            "position": "Customer Support",
+                            "office": "New York",
+                            "extn": "4226",
+                            "start": "2011\/01\/25",
+                            "salary": "$112,000"
+                        }
+                    ]
                 }
             ]
         },
@@ -76,6 +78,14 @@
         },
         {
             "name": "Cedric Kelly",
+            "position": "Senior Javascript Developer",
+            "office": "Edinburgh",
+            "extn": "6224",
+            "start": "2012\/03\/29",
+            "salary": "$433,060"
+        },
+        {
+            "name": "Zedric Kelly",
             "position": "Senior Javascript Developer",
             "office": "Edinburgh",
             "extn": "6224",
