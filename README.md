@@ -12,6 +12,25 @@ TreeGrid extension for jquery DataTables
 ```collapseIcon```: collapse icon html
 
 ## Usage
+the row data should contain a property "children" as blow:
+```
+{
+"data": 
+    [
+        {
+            "name": "Tiger Nixon",
+            ...
+            "children": [
+                {
+                    "name": "Hermione Butler",
+                    ...
+                }
+            ]
+        }
+    ]
+}            
+```
+the js initialization part as blow:
 ```html
 $('#example').DataTable({
     'treeGrid': {
