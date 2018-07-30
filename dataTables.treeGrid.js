@@ -125,11 +125,11 @@
                 var selectedIndexes = [];
                 select && (selectedIndexes = dataTable.rows({selected: true}).indexes().toArray());
 
-                var row = dataTable.row(this);
+                var row = dataTable.row(getParentTr(e.target));
                 var index = row.index();
                 var data = row.data();
 
-                var td = $(dataTable.cell(this).node());
+                var td = $(dataTable.cell(getParentTd(e.target)).node());
                 var paddingLeft = parseInt(td.css('padding-left'), 10);
                 var layer = parseInt(td.find('span').css('margin-left') || 0, 10) / sLeft;
                 var icon = collapseIcon.clone();
@@ -165,14 +165,14 @@
                 var selectedIndexes = [];
                 select && (selectedIndexes = dataTable.rows({selected: true}).indexes().toArray());
 
-                var td = $(dataTable.cell(this).node());
+                var index = dataTable.row(getParentTr(e.target)).index();
+                var td = $(dataTable.cell(getParentTd(e.target)).node());
                 var layer = parseInt(td.find('span').css('margin-left') || 0, 10) / sLeft;
                 var icon = expandIcon.clone();
                 icon.css('marginLeft', layer * sLeft + 'px');
                 td.removeClass('treegrid-control-open').addClass('treegrid-control');
                 td.html('').append(icon);
 
-                var index = dataTable.row(this).index();
                 resetTreeGridRows(index);
                 resetEvenOddClass(dataTable);
                 select && setTimeout(function () {
@@ -276,6 +276,14 @@
                 deselectChildren(dataTable, childIndex);
             });
         }
+    }
+
+    function getParentTr(target) {
+        return $(target).parents('tr')[0];
+    }
+
+    function getParentTd(target) {
+        return $(target).parents('td')[0];
     }
 
     TreeGrid.defaults = {
