@@ -1,5 +1,5 @@
 # dataTables.treeGrid.js
-TreeGrid extension for jquery DataTables
+TreeGrid extension for jquery DataTables@1.10.19
 
 ## Demo
 [https://homfen.github.io/dataTables.treeGrid.js](https://homfen.github.io/dataTables.treeGrid.js)
