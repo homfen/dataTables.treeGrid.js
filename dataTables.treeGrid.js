@@ -283,7 +283,7 @@
     }
 
     function getParentTd(target) {
-        return $(target).parents('td')[0];
+        return target.tagName === 'TD' ? target : $(target).parents('td')[0];
     }
 
     TreeGrid.defaults = {
