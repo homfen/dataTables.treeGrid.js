@@ -1,7 +1,7 @@
 /**
  * @summary     TreeGrid
  * @description TreeGrid extension for DataTable
- * @version     1.0.1
+ * @version     1.0.4
  * @file dataTables.treeGrid.js
  * @author homfen(homfen@outlook.com)
  */
@@ -292,7 +292,7 @@
         collapseIcon: '<span>-</span>'
     };
 
-    TreeGrid.version = '1.0.0';
+    TreeGrid.version = '1.0.4';
 
     DataTable.Api.register('treeGrid()', function () {
         return this;
