@@ -1,6 +1,6 @@
 {
   "name": "datatables-treegrid",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "treegrid extension for datatables",
   "main": "dataTables.treeGrid.js",
   "scripts": {
