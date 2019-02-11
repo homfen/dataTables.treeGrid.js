@@ -84,7 +84,7 @@
                 var subRows = treeGridRows[trId];
                 if (subRows && subRows.length) {
                     subRows.forEach(function (node) {
-                        var subTrId = $(node).attr('id');
+                        var subTrId = $(node).attr('tg-id');
                         if (treeGridRows[subTrId]) {
                             resetTreeGridRows(subTrId);
                         }
@@ -118,7 +118,7 @@
 
                 var parentTr = getParentTr(e.target);
                 var parentTrId = getTrId();
-                $(parentTr).attr('id', parentTrId);
+                $(parentTr).attr('tg-id', parentTrId);
                 var row = dataTable.row(parentTr);
                 var index = row.index();
                 var data = row.data();
@@ -160,7 +160,7 @@
                 select && (selectedIndexes = dataTable.rows({selected: true}).indexes().toArray());
 
                 var parentTr = getParentTr(e.target);
-                var parentTrId = $(parentTr).attr('id');
+                var parentTrId = $(parentTr).attr('tg-id');
                 var td = $(dataTable.cell(getParentTd(e.target)).node());
                 var layer = parseInt(td.find('span').css('margin-left') || 0, 10) / sLeft;
                 var icon = expandIcon.clone();
